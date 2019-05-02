@@ -1,8 +1,16 @@
 # crawlc - a website crawler, frontend to gocrawl
 
+## Installation
+
+`go get github.com/flaccid/crawlc`
+
+## Usage
+
 `crawlc --help`
 
-# License
+For example, `crawlc -D -e https://developersdevelopersdevelopers.dev`
+
+## License
 
 - Author: Chris Fordham (<chris@fordham.id.au>)
 
