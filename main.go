@@ -44,7 +44,7 @@ func main() {
 		cli.IntFlag{
 			Name:  "max-visits,m",
 			Usage: "maximum number of visits",
-			Value: 100,
+			Value: 100000,
 		},
 		cli.BoolFlag{
 			Name:  "debug,D",
