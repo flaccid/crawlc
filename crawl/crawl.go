@@ -19,7 +19,7 @@ type Ext struct {
 
 type ResultSummary struct {
 	Http200 int
-	Http404 int
+	Errors int
 }
 
 var (
@@ -45,6 +45,10 @@ func (e *Ext) Visit(ctx *gocrawl.URLContext, res *http.Response, doc *goquery.Do
 
 func (e *Ext) End(err error) {
 	report(responses)
+}
+
+func (e *Ext) Error(err *gocrawl.CrawlError) {
+	results.Errors++
 }
 
 func (e *Ext) Filter(ctx *gocrawl.URLContext, isVisited bool) bool {
@@ -76,8 +80,6 @@ func report(r []*http.Response) {
 		switch res.StatusCode {
     case 200:
         results.Http200++
-    case 404:
-        results.Http404++
     }
 	}
 
@@ -85,7 +87,7 @@ func report(r []*http.Response) {
 		"elapsed": elapsed,
 		"total responses": len(r),
 		"http-200": results.Http200,
-		"http-404": results.Http404,
+		"errors": results.Errors,
 	}).Info("results")
 }
 
