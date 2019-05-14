@@ -66,7 +66,7 @@ func (e *Ext) ComputeDelay(host string, di *gocrawl.DelayInfo, lastFetch *gocraw
 			"duration": lastFetch.Duration,
 			"delay-info": di,
 			"status": lastFetch.StatusCode,
-			"head-requst": strconv.FormatBool(lastFetch.IsHeadRequest),
+			"head-request": strconv.FormatBool(lastFetch.IsHeadRequest),
 		}).Info("hit")
 	}
 
