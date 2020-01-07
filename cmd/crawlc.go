@@ -3,13 +3,10 @@ package main
 import (
 	"os"
 
+  "github.com/flaccid/crawlc"
 	"github.com/flaccid/crawlc/crawl"
 	"github.com/urfave/cli"
 	log "github.com/Sirupsen/logrus"
-)
-
-var (
-	VERSION = "v0.0.0-dev"
 )
 
 func beforeApp(c *cli.Context) error {
@@ -27,8 +24,15 @@ func beforeApp(c *cli.Context) error {
 func main() {
 	app := cli.NewApp()
 	app.Name = "crawlc"
-	app.Version = VERSION
+	app.Version = crawlc.VERSION
 	app.Usage = "a website crawler, frontend to gocrawl"
+	app.Authors = []cli.Author{
+		cli.Author{
+			Name:  crawlc.AUTHOR,
+			Email: crawlc.EMAIL,
+		},
+	}
+	app.Copyright = crawlc.COPYRIGHT
 	app.Action = start
 	app.Before = beforeApp
 	app.Flags = []cli.Flag{
