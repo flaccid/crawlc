@@ -2,7 +2,7 @@
 
 ## Installation
 
-`go get github.com/flaccid/crawlc`
+`go get -u github.com/flaccid/crawlc/cmd`
 
 ## Usage
 
