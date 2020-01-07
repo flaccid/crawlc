@@ -2,7 +2,10 @@
 
 ## Installation
 
-`go get -u github.com/flaccid/crawlc/cmd`
+Ensure you have `urfave/cli` v1, follow
+https://github.com/urfave/cli#using-v1-releases
+
+`go get -u github.com/flaccid/crawlc/cmd/crawlc`
 
 ## Usage
 
