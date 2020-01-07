@@ -6,7 +6,7 @@ import (
   "github.com/flaccid/crawlc"
 	"github.com/flaccid/crawlc/crawl"
 	"github.com/urfave/cli"
-	log "github.com/Sirupsen/logrus"
+	log "github.com/sirupsen/logrus"
 )
 
 func beforeApp(c *cli.Context) error {
