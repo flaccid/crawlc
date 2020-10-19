@@ -60,14 +60,20 @@ func (e *Ext) Filter(ctx *gocrawl.URLContext, isVisited bool) bool {
 
 func (e *Ext) ComputeDelay(host string, di *gocrawl.DelayInfo, lastFetch *gocrawl.FetchInfo) time.Duration {
 	if lastFetch != nil {
-		log.WithFields(log.Fields{
+		logFields := log.Fields{
 			"url": lastFetch.Ctx.URL(),
+			"source-url": lastFetch.Ctx.SourceURL(),
 			"host": host,
 			"duration": lastFetch.Duration,
 			"delay-info": di,
 			"status": lastFetch.StatusCode,
 			"head-request": strconv.FormatBool(lastFetch.IsHeadRequest),
-		}).Info("hit")
+		}
+		if strconv.Itoa(lastFetch.StatusCode)[:1] == "2" {
+			log.WithFields(logFields).Info("hit")
+		} else {
+			log.WithFields(logFields).Error("hit-error")
+		}
 	}
 
 	return di.OptsDelay
